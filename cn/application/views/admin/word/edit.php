@@ -1,0 +1,123 @@
+<div class="content-box"><!-- Start Content Box -->
+				
+				<div class="content-box-header">
+				
+				<h3><?php echo $title_text; ?></h3>
+				
+					<div class="clear"></div>
+					
+				</div> <!-- End .content-box-header -->
+				
+<div class="content-box-content"> 
+					
+	<div class="tab-content default-tab" id="tab1">
+					
+					<form action="<?php echo site_url('a_word/save'); ?>" method="post" id="form1"  enctype="multipart/form-data" />
+					<input type="hidden" name="id" value="<?php echo $id?$id:''; ?>" />
+					
+					<p>分　类：
+                    <select id="sid" name="sid">
+					<?php foreach($sort as $item): ?>
+                    	<option value="<?php echo $item['id']; ?>"><?php echo $item['sortname']; ?></option>
+                    <?php endforeach; ?>
+                    </select>
+                    <script type="text/javascript">$('#sid').val('<?php echo $sid?$sid:'';?>');</script>
+                    </p>
+					<p>标　题：<input type="text" name="title" value="<?php echo $id?$title:'';?>"  class="text-input medium-input datepicker" /></p>
+					<p>排　序：<input type="text" name="index" value="<?php echo $id?$index:'';?>"  class="text-input medium-input datepicker" /></p>
+                    
+				    <p>上　传：<b>注意：只支持上传jpg,png,gif,bmp文件 图片尺寸：210x210</b><div id="queue"></div>
+                      <input id="file_upload" name="file_upload" type="file"  multiple="true"/>
+                      <input type="hidden" name="upfile" id="upfile" value="<?php echo $id?$upfile:''; ?>" />
+                      <img id="imgs" src="<?php echo $id?base_url('upload').'/'.$upfile:''; ?>" <?php if(!$id){echo ' style="display:none;"';} ?> height="100" />
+                    </p>
+                    <p><b>产品图片：<b class="red">图片最佳尺寸：960 x 512</b></b>
+                    <textarea id="pro_id" name="pro_upfile" style="height:500px;"><?php echo $id?$pro_upfile:''; ?></textarea>
+                    </p>
+                    
+                    <p><b>详细内容：</b>
+                    <textarea class="editor_id" name="content" style="height:400px;"><?php echo $id?$content:''; ?></textarea>
+                    </p>
+                    
+                    <p><b>Features：</b>
+                    <textarea class="editor_id" name="Features" style="height:400px;"><?php echo $id?$Features:''; ?></textarea>
+                    </p>
+                    
+                    <p><b>Specifications：</b>
+                    <textarea class="editor_id" name="Specifications" style="height:400px;"><?php echo $id?$Specifications:''; ?></textarea>
+                    </p>
+                    
+					<p><input class="button" type="submit" value=" <?php echo $button_name; ?> "/>
+                       <input class="button" type="button" value="返回" onclick="javascript:history.go(-1);" /></p>
+			</form>
+			
+<script charset="utf-8" src="<?php echo base_url('resources/HMKindEditor/kindeditor.js'); ?>"></script>
+<script charset="utf-8" src="<?php echo base_url('resources/HMKindEditor/lang/zh_CN.js'); ?>"></script>
+<script>
+	KindEditor.ready(function(K) {
+		editor = K.create('#pro_id', {
+			resizeType : 1,
+			allowPreviewEmoticons : false,
+			allowImageUpload : false,
+			items : ['|','multiimage','|','fullscreen','|','clearhtml']
+		});
+	});
+	
+
+        KindEditor.ready(function(K) {
+        	window.editor = K.create('.editor_id');
+        });
+</script>
+</div><!-- End tab1 -->
+
+
+			
+</div> <!-- End content-box-content -->
+</div>
+
+<script src="<?php echo base_url('resources/uploadify/jquery.uploadify.min.js'); ?>" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('resources/uploadify/uploadify.css'); ?>">
+<script type="text/javascript">
+
+	<?php $timestamp = time();?>
+	$(function(){
+		$('#file_upload').uploadify({
+			    'formData'  : {
+				'timestamp' : '<?php echo $timestamp;?>',
+				'token'     : '<?php echo md5('YSH'.$timestamp);?>'
+			},
+		   'buttonText': '封面图片',
+			'swf'      : '<?php echo base_url('resources/uploadify/uploadify.swf'); ?>',
+			'uploader' : '<?php echo site_url('uploadify/index'); ?>',
+	 'removeCompleted' : true,
+	 'removeTimeout'   : 1,
+	 'queueSizeLimit'  : 1,
+	 'fileTypeDesc' :'只支持jpg,png,gif,bmp文件',
+	 'fileTypeExts' :'*.jpg;*.png;*.gif;*.bmp',
+			//上传到服务器，服务器返回相应信息到data里
+            'onUploadSuccess':function(file,data,response){
+				var imgs=$('#imgs');
+				var upfile=$('#upfile');
+				var fileType=new String(file.type);
+				var lowerType=fileType.toLowerCase();
+				//alert(fileType);
+				if(lowerType == '.jpg' || lowerType =='.png' || lowerType =='.gif' || lowerType =='.bmp'){
+					var imgsUrl="<?php echo base_url('upload'); ?>";
+					imgs.attr('src',imgsUrl+'/'+data);
+					imgs.attr('style','display:block');
+				}
+				
+				if(upfile !=''){
+					var url='<?php echo site_url('upload/del_file'); ?>';
+					$.post(url,{upfile:upfile.val()},function(datas){
+						//alert(datas);
+					});
+				}
+				upfile.val(data);
+            }
+		});
+	});
+
+
+
+</script>

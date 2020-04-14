@@ -1,0 +1,6 @@
+﻿<flash_project name="~uploadify" version="1">
+	<project_file filetype="fla" path="./~uploadify.fla" profile=""/>
+	<project_file filetype="as" path="./SWFUpload.as"/>
+	<project_file filetype="as" path="./ExternalCall.as"/>
+	<project_file filetype="as" path="./FileItem.as"/>
+</flash_project>

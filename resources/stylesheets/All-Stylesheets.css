@@ -1,0 +1,40 @@
+/* --------------------------------------------------------
+Import All Stylesheets
+-------------------------------------------------------- */
+
+@import url("base.css");
+@import url("skeleton.css");					
+@import url("stylesheet.css");					
+@import url("social-icons-hover/social-icons-style.css");	
+@import url("supersized.css");					
+@import url("supersized.shutter.css");								
+@import url("portfolio/isotope-style.css");			
+@import url("portfolio/portfolio-mask.css");			
+@import url("portfolio/prettyPhoto.css");				
+
+img{ border:0;}
+.ysh_main{ width:1200px; margin:0 auto;}
+.ysh_search{width:335px; height:30px; float:right; margin-top:200px;}
+.ysh_txt{ width:299px; height:30px; float:left; color:#000; border:0; outline:none; background:url(../images/search_txt.jpg) left no-repeat;}
+.ysh_btn{ width:33px; height:30px; float:left;  border:0; background:url(../images/search_btn.jpg) left no-repeat;}
+.oblong{width:48px; height:9px; background:#000;}
+.float_r{float:right; }
+.float_l{ float:left;}
+.container1010{ width:1010px; margin:35px 95px;}
+
+.container1010 li{ width:290px; float:left;}
+.margin_r{ margin-right:70px;}
+.margin_s{ margin-right:57px;}
+.team h1,.team h4{ color:#a3a3a3; font-family:"微软雅黑"; }
+.team h4{ color:#a3a3a3;}
+.infoTxt{font-family:"微软雅黑"; float:left; font-size:22px; line-height:28px; }
+
+.contects{ height:800px; background:#FFF; box-shadow: 0px 5px 15px #000;}
+
+.officeTel{ margin:40px 40px 10px 40px; float:left;}
+.address{ width:930px; margin-left:40px; background:url(../images/contacts.jpg) no-repeat; float:left; }
+.address span{ width:400px; font-size:12px; color:#000; float:right;}
+
+.inputInfo{ width:930px; margin-left:40px; float:left; margin-top:100px; }
+
+

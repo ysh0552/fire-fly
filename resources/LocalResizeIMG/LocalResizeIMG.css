@@ -1,0 +1,16 @@
+﻿<style type="text/css">
+body{font-family:"微软雅黑"}
+.uploadbtn{ width: 100px; height: 100px; display: block; background: url(updatebtn.png) no-repeat; background-size: 100%; }
+.uploadfilemain{ width:100%; overflow: hidden; display: flex; flex-direction: row;  }
+#uploadphoto{ width: 100px; height: 100px; opacity: 0; float: left; cursor: pointer; }
+.imglist{ display: flex; flex-direction: row; }
+.imglist,.uploadfilebtn{ padding:10px 0; }
+.imgurl,.imgurl img{margin-right: 15px; }
+.imgurl{ position: relative; }
+.closebtn{ padding:5px 10px; border-radius: 5px; background: #FF0000; color:#FFF; right:-68px; bottom: 0; position: absolute; }
+
+.loading{ display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: rgba(0,0,0,0.5);  }
+.loading_img{ width: 100%; text-align: center; color: #FFF; font-size: 66px; padding-top:15%; }
+.loading_img img{ padding:10px; border-radius: 50%; background: #FFF; }
+
+</style>
